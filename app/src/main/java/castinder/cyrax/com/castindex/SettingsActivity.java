@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,7 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                     if(map.get("profileImageUrl") != null){
                         profileImageUrl = map.get("profileImageUrl").toString();
-                        mPhoneField.setText(phone);
+                        Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
                     }
                 }
             }
