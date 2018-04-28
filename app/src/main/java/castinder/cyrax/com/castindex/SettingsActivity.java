@@ -1,5 +1,7 @@
 package castinder.cyrax.com.castindex;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +49,14 @@ public class SettingsActivity extends AppCompatActivity {
         mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(userId);
 
         getUserInfo();
+        mProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,1);
+            }
+        });
         //click al boton confirm
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,5 +97,15 @@ public class SettingsActivity extends AppCompatActivity {
         userInfo.put("name", name);
         userInfo.put("phone", phone);
         mCustomerDatabase.updateChildren(userInfo);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            final Uri imageUri = data.getData();
+            resultUri = imageUri;
+
+        }
     }
 }
