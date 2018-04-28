@@ -48,6 +48,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        String userSex = getIntent().getExtras().getString("userSex");
+
         mNameField = (EditText)findViewById(R.id.name);
         mPhoneField = (EditText)findViewById(R.id.phone);
         mProfileImage = (ImageView)findViewById(R.id.profileImage);
@@ -57,7 +59,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(userId);
+        mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userSex).child(userId);
 
         getUserInfo();
         mProfileImage.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +75,15 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
+            }
+        });
+
+        //click al boton back
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                return;
             }
         });
     }
@@ -140,7 +151,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                     Map userInfo = new HashMap();
-                    userInfo.put("profileImageUrl", downloadUrl);
+                    userInfo.put("profileImageUrl", downloadUrl.toString());
                     mCustomerDatabase.updateChildren(userInfo);
 
                     finish();
