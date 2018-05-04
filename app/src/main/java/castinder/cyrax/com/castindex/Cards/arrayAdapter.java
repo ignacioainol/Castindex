@@ -1,6 +1,5 @@
-package castinder.cyrax.com.castindex;
+package castinder.cyrax.com.castindex.Cards;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+
+import castinder.cyrax.com.castindex.R;
 
 /**
  * Created by ignacioainolrivera on 26-04-18.

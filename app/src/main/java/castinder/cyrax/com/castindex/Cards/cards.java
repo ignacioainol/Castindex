@@ -1,4 +1,4 @@
-package castinder.cyrax.com.castindex;
+package castinder.cyrax.com.castindex.Cards;
 
 /**
  * Created by ignacioainolrivera on 26-04-18.

@@ -15,7 +15,15 @@
             android:text="SignOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="logoutUser"/>
+            android:onClick="logoutUser"
+            android:layout_weight="1"/>
+
+        <Button
+            android:text="Match's"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToMatches"
+            android:layout_weight="1"/>
 
         <Button
             android:text="Settings"
