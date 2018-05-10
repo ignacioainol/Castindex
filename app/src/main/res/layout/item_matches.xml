@@ -6,15 +6,34 @@
     android:padding="20sp">
 
     <ImageView
+        android:id="@+id/MatchImage"
         android:layout_width="55sp"
         android:layout_height="55sp"
         android:src="@mipmap/ic_launcher"/>
 
-    <TextView
-        android:id="@+id/Matchid"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Matche's ID"
-        android:layout_gravity="center"/>
+        android:orientation="vertical"
+        android:paddingLeft="20sp"
+        android:layout_gravity="center">
+
+
+        <TextView
+            android:id="@+id/MatchName"
+            android:paddingBottom="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matche's Name"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/Matchid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matche's ID"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
 
 </LinearLayout>
