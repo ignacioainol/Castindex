@@ -28,6 +28,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/message"
             android:layout_weight="0.7"
             android:hint="Escribe Aqui..."
             android:layout_width="0dp"
