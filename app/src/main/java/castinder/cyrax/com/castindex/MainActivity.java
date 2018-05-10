@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,10 +21,14 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import java.util.ArrayList;
 import java.util.List;
 
+import castinder.cyrax.com.castindex.Cards.arrayAdapter;
+import castinder.cyrax.com.castindex.Cards.cards;
+import castinder.cyrax.com.castindex.Matches.MatchesActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private cards cards_data[];
-    private arrayAdapter arrayAdapter;
+    private castinder.cyrax.com.castindex.Cards.arrayAdapter arrayAdapter;
     private int i;
 
     private FirebaseAuth mAuth;
@@ -242,6 +245,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToSettings(View view) {
         Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+        startActivity(intent);
+        return;
+    }
+
+    public void goToMatches(View view) {
+        Intent intent = new Intent(MainActivity.this,MatchesActivity.class);
         startActivity(intent);
         return;
     }

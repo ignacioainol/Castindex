@@ -1,4 +1,4 @@
-package castinder.cyrax.com.castindex;
+package castinder.cyrax.com.castindex.Cards;
 
 /**
  * Created by ignacioainolrivera on 26-04-18.
@@ -18,7 +18,6 @@ public class cards {
     public String getUserId(){
         return userId;
     }
-
     public void setUserID(String userID){
         this.userId = userID;
     }
