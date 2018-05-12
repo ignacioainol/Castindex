@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connections").child("yeps").child(currentUid).setValue(true);
-                inConnectionMatch(userId);
+                isConnectionMatch(userId);
                 Toast.makeText(MainActivity.this, "Right!", Toast.LENGTH_SHORT).show();
             }
 
@@ -109,23 +109,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void inConnectionMatch(String userId) {
+    private void isConnectionMatch(String userId) {
         DatabaseReference currentUserConnectionsDb = usersDb.child(currentUid).child("connections").child("yeps").child(userId);
         currentUserConnectionsDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast.makeText(MainActivity.this,"Match!", Toast.LENGTH_LONG).show();
+                if (dataSnapshot.exists()){
+                    Toast.makeText(MainActivity.this, "new Connection", Toast.LENGTH_LONG).show();
 
-                String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
+                    String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
 
-                usersDb.child(dataSnapshot.getKey()).child("connections").child("matches").child(currentUid).child("ChatId").setValue(key);
-
-                usersDb.child(currentUid).child("connections").child("matches").child(dataSnapshot.getKey()).child("ChatId").setValue(key);
+                    usersDb.child(dataSnapshot.getKey()).child("connections").child("matches").child(currentUid).child("ChatId").setValue(key);
+                    usersDb.child(currentUid).child("connections").child("matches").child(dataSnapshot.getKey()).child("ChatId").setValue(key);
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
